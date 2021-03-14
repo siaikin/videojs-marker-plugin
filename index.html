@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>videojs-marker-plugin Demo</title>
+  <link href="node_modules/video.js/dist/video-js.css" rel="stylesheet">
+  <link href="dist/videojs-marker-plugin.css" rel="stylesheet">
+</head>
+<body>
+  <video id="videojs-marker-plugin-player" class="video-js vjs-default-skin" controls>
+    <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+    <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
+  </video>
+  <ul>
+    <li><a href="/test/debug.html">Run unit tests in browser.</a></li>
+    <li><a href="docs/api/">Read generated docs.</a></li>
+  </ul>
+  <script src="node_modules/video.js/dist/video.js"></script>
+  <script src="dist/videojs-marker-plugin.js"></script>
+  <script>
+    (function(window, videojs) {
+      var examplePlayer = window.examplePlayer = videojs('videojs-marker-plugin-player', {
+        controlBar: {
+          children: [
+            'playToggle',
+            'progressControl',
+            'liveDisplay',
+            'seekToLive',
+            'currentTimeDisplay',
+            'timeDivider',
+            'durationDisplay',
+            'volumePanel',
+            'remainingTimeDisplay',
+            'customControlSpacer',
+            'playbackRateMenuButton',
+            'chaptersButton',
+            'descriptionsButton',
+            'subsCapsButton',
+            'audioTrackButton',
+            // 'pictureInPictureToggle',
+            'fullscreenToggle',
+          ],
+          volumePanel: {
+            inline: false,
+          }
+        },
+      });
+      console.log(examplePlayer);
+      var markerPlugin = window.markerPlugin = examplePlayer.markerPlugin({
+        markers: [
+          {
+            offset: 8.5,
+            type: 'text',
+            data: {
+              content: '屏幕共享'
+            }
+          },
+          {
+            offset: 13.5,
+            type: 'text',
+            data: {
+              content: '通话持线'
+            }
+          },
+          {
+            offset: 19.5,
+            type: 'text',
+            data: {
+              content: '预转接说明'
+            }
+          },
+          {
+            offset: 26,
+            type: 'text',
+            data: {
+              content: '预转接说明'
+            }
+          },
+          {
+            offset: 27,
+            type: 'text',
+            data: {
+              content: '预转接说明'
+            }
+          },
+          {
+            offset: 28,
+            type: 'text',
+            data: {
+              content: '预转接说明'
+            }
+          },
+          {
+            offset: 29,
+            type: 'text',
+            data: {
+              content: '预转接说明'
+            }
+          },
+          {
+            offset: 30,
+            type: 'text',
+            data: {
+              content: '预转接说明'
+            }
+          },
+          {
+            offset: 31,
+            type: 'text',
+            data: {
+              content: '预转接说明'
+            }
+          },
+          {
+            offset: 32,
+            type: 'text',
+            data: {
+              content: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+            }
+          },
+          {
+            offset: 39.5,
+            type: 'text',
+            data: {
+              content: '预转接说明'
+            }
+          },
+          {
+            offset: 46,
+            type: 'text',
+            data: {
+              content: '预转接说明'
+            }
+          },
+        ]
+      });
+    }(window, window.videojs));
+  </script>
+</body>
+</html>

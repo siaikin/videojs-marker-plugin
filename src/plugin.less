@@ -1,0 +1,180 @@
+/**
+ * css for videojs-marker-plugin
+ * With the default plugins for postcss you can
+ * - @import files, they will be inlined during build
+ * - not worry about browser prefixes, they will be handled
+ * - nest selectors. This follows the css specification that is
+ *   currently out on some browsers. See https://tabatkins.github.io/specs/css-nesting/
+ * - custom properties (aka variables) via the var(--var-name) syntax. See
+ *   https://www.w3.org/TR/css-variables-1/
+ */
+
+
+/* Note: all vars must be defined here, there are no "local" vars */
+:root {
+  --main-color: red;
+  --base-font-size: 9;
+  --font-size: 7;
+}
+
+.video-js {
+
+  & .vjs-current-time {
+    display: block;
+    padding: 0;
+  }
+
+  & .vjs-time-divider {
+    display: block;
+    padding: 0;
+    min-width: auto;
+  }
+
+  & .vjs-duration {
+    display: block;
+    padding: 0;
+  }
+
+  & .vjs-control {
+    width: 3em!important;
+
+    & > .vjs-control {
+      padding: 0;
+    }
+  }
+
+  & .vjs-volume-panel-vertical {
+    & .vjs-volume-vertical {
+      left: -3em!important;
+    }
+  }
+
+  & .vjs-remaining-time {
+    display: none;
+  }
+
+  &.vjs-marker-plugin {
+    /* This class is added to the video.js element by the plugin by default. */
+    display: block;
+
+    & .remove-me, & .remove-me-too, &.finally-remove-me {
+      /* examples of postcss syntax, you probably want to remove this */
+
+      color: var(--main-color);
+
+      /**
+       * Note that you have to use calc and multiply by a value with a unit
+       * prepending the unit like `var(--base-font-size)px` or
+       * `calc(10 * var(--base-font-size)em` will NOT work!
+       */
+      font-size: calc(var(--font-size) * 8 * var(--base-font-size) * 1px);
+
+    }
+
+    & .vjs-marker-bar {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    & .vjs-marker-point {
+      position: absolute;
+      width: 0.3em;
+      height: 0.3em;
+      background: white;
+      left: -0.15em;
+      border-radius: 0.3em;
+
+      & .vjs-marker-point-tip {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        font-size: 12px;
+        text-align: left;
+        width: 300px;
+        height: 0;
+
+        & .vjs-time-tooltip {
+          max-width: 164px;
+          padding: 8px 12px;
+          bottom: 12px;
+          top: auto;
+          background: white;
+
+          &::before {
+            content: '';
+            border-top: 10px solid white;
+            border-right: 5px solid transparent;
+            border-bottom: 0 solid transparent;
+            border-left: 5px solid transparent;
+            position: absolute;
+            left: calc(50% - 6px);
+            top: 100%;
+          }
+        }
+
+        & .vjs-marker-point-tip-time {
+          margin: 0 0 4px 0;
+          color: #026DFF;
+          font-weight: bold;
+        }
+
+        & .vjs-marker-point-tip-content {
+          word-break: break-all;
+          margin: 0;
+          color: rgba(0, 0, 0, 0.7);
+        }
+      }
+    }
+
+    & .vjs-markers-panel {
+      width: 318px;
+      position: absolute;
+      left: 100%;
+      height: 100%;
+      padding: 24px;
+
+      & .vjs-markers-panel-title {
+        font-size: 16px;
+        margin: 0 0 8px 0;
+        color: black;
+        font-weight: bold;
+      }
+
+      & .vjs-markers-panel-subtitle {
+        font-size: 14px;
+        margin: 0 0 8px 0;
+        color: rgba(0, 0, 0, 0.7);
+      }
+
+      & .vjs-markers-panel-list {
+        font-size: 14px;
+        margin: 0;
+        overflow-y: auto;
+        height: calc(100% - 46px);
+
+        & .vjs-markers-panel-list-item {
+          padding: 4px 8px;
+          box-sizing: border-box;
+          background: rgba(0, 0, 0, 0.05);
+          color: rgba(0, 0, 0, 0.7);
+          margin-bottom: 12px;
+
+          & .vjs-markers-panel-item-time {
+            display: inline-block;
+            width: 56px;
+            text-align: left;
+            vertical-align: top;
+          }
+
+          & .vjs-markers-panel-item-content {
+            display: inline-block;
+            width: calc(100% - 60px);
+            word-break: break-all;
+          }
+        }
+      }
+
+    }
+  }
+}
