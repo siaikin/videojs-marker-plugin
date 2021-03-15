@@ -34,14 +34,16 @@ class MarkerPlugin extends Plugin {
 
     this.options = videojs.mergeOptions(defaults, options);
 
-    this.player.addChild(this.createMarkersPanel());
-    this.player.ready(() => {
-      this.player.addClass('vjs-marker-plugin');
-      const container = player.getDescendant(['ControlBar', 'ProgressControl', 'SeekBar']);
-      const markerBar = this.createMarkerBar();
+    this.player.addClass('vjs-marker-plugin');
 
-      container.addChild(markerBar);
-    });
+    if (!(this.options.panel === false)) {
+      this.player.addChild(this.createMarkersPanel());
+    }
+
+    const container = player.getDescendant(['ControlBar', 'ProgressControl', 'SeekBar']);
+    const markerBar = this.createMarkerBar();
+
+    container.addChild(markerBar);
   }
 
   /**

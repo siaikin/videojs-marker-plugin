@@ -45,7 +45,6 @@
           }
         },
       });
-      console.log(examplePlayer);
       var markerPlugin = window.markerPlugin = examplePlayer.markerPlugin({
         markers: [
           {
@@ -132,7 +131,8 @@
               content: '预转接说明'
             }
           },
-        ]
+        ],
+        panel: false,
       });
     }(window, window.videojs));
   </script>

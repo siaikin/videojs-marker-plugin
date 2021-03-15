@@ -1,12 +1,12 @@
 import videojs from 'video.js';
 import {MarkerPoint} from './markerPoint';
 
-const Slider = videojs.getComponent('Slider');
+const Component = videojs.getComponent('Component');
 
 /**
  * Only the slider of the marker is displayed
  */
-class MarkerBar extends Slider {
+class MarkerBar extends Component {
 
   /**
    * generate a {@link MarkerBar} instance
@@ -27,7 +27,7 @@ class MarkerBar extends Slider {
       markers.push(new MarkerPoint(player, options.markers[i]));
     }
 
-    return new MarkerBar(player, {markers});
+    return new MarkerBar(player, {markers, barName: 'markerPoint'});
   }
 
   /**
