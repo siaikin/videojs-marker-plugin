@@ -1,6 +1,6 @@
 {
   "name": "videojs-marker-plugin",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/videojs-marker-plugin.cjs.js",
   "module": "dist/videojs-marker-plugin.es.js",

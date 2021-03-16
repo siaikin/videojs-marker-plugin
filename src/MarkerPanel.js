@@ -33,8 +33,9 @@ class MarkerPanel extends Component {
     super(player, options);
 
     const markerItemList = [];
+    const len = options.markers.length;
 
-    for (let i = options.markers.length; i--;) {
+    for (let i = 0; i < len; i++) {
       const markerOption = options.markers[i];
 
       markerItemList.push(this.createMarkerItem(markerOption.offset, markerOption.data));
