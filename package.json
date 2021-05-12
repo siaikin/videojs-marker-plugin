@@ -1,6 +1,6 @@
 {
   "name": "videojs-marker-plugin",
-  "version": "0.0.3",
+  "version": "0.0.12",
   "description": "",
   "main": "dist/videojs-marker-plugin.cjs.js",
   "module": "dist/videojs-marker-plugin.es.js",
@@ -78,9 +78,11 @@
       "git add"
     ]
   },
-  "dependencies": {
-    "global": "^4.4.0",
+  "peerDependencies": {
     "video.js": "7.11.4"
+  },
+  "dependencies": {
+    "global": "^4.4.0"
   },
   "devDependencies": {
     "@videojs/generator-helpers": "~1.0.0",

@@ -36,14 +36,7 @@ class MarkerPlugin extends Plugin {
 
     this.player.addClass('vjs-marker-plugin');
 
-    if (!(this.options.panel === false)) {
-      this.player.addChild(this.createMarkersPanel());
-    }
-
-    const container = player.getDescendant(['ControlBar', 'ProgressControl', 'SeekBar']);
-    const markerBar = this.createMarkerBar();
-
-    container.addChild(markerBar);
+    this.updateOptions();
   }
 
   /**
@@ -52,9 +45,10 @@ class MarkerPlugin extends Plugin {
    * @return {MarkerBar} return a {@link MarkerBar} instance
    */
   createMarkerBar() {
-    return MarkerBar.build(this.player, {
+    this.markerBar = MarkerBar.build(this.player, {
       markers: this.options.markers
     });
+    return this.markerBar;
   }
 
   /**
@@ -63,9 +57,26 @@ class MarkerPlugin extends Plugin {
    * @return {MarkerPanel} return a {@link MarkerPanel} instance
    */
   createMarkersPanel() {
-    return MarkerPanel.build(this.player, {
+    this.markerPanel = MarkerPanel.build(this.player, {
       markers: this.options.markers
     });
+    return this.markerPanel;
+  }
+
+  updateOptions(options) {
+    this.options = videojs.mergeOptions(this.options, options);
+
+    if (this.markerBar) this.markerBar.dispose();
+    if (this.markerPanel) this.markerPanel.dispose();
+
+    if (!(this.options.panel === false)) {
+      this.player.addChild(this.createMarkersPanel());
+    }
+
+    const container = this.player.getDescendant(['ControlBar', 'ProgressControl', 'SeekBar']);
+    this.createMarkerBar()
+
+    container.addChild(this.markerBar);
   }
 }
 
@@ -76,6 +87,6 @@ MarkerPlugin.defaultState = {};
 MarkerPlugin.VERSION = VERSION;
 
 // Register the plugin with video.js.
-videojs.registerPlugin('markerPlugin', MarkerPlugin);
+// videojs.registerPlugin('markerPlugin', MarkerPlugin);
 
 export default MarkerPlugin;

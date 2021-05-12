@@ -19,6 +19,16 @@
 
 .video-js {
 
+  font-size: 12px;
+
+  & .vjs-slider-vertical .vjs-volume-level:before {
+    left: -0.35em;
+  }
+
+  & .vjs-play-progress {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
   &.vjs-marker-plugin {
     /* This class is added to the video.js element by the plugin by default. */
     display: block;
@@ -110,7 +120,7 @@
 
       & .vjs-markers-panel-subtitle {
         font-size: 14px;
-        margin: 0 0 8px 0;
+        margin: 0 0 16px 0;
         color: rgba(0, 0, 0, 0.7);
       }
 
@@ -121,12 +131,16 @@
         height: calc(100% - 46px);
 
         & .vjs-markers-panel-list-item {
-          padding: 4px 8px;
+          padding: 6px 8px;
           box-sizing: border-box;
           background: rgba(0, 0, 0, 0.05);
           color: rgba(0, 0, 0, 0.7);
           margin-bottom: 12px;
+          cursor: pointer;
 
+          &:hover {
+            background: rgba(2, 109, 255, 0.2);
+          }
           & .vjs-markers-panel-item-time {
             display: inline-block;
             width: 56px;

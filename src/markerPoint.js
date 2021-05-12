@@ -100,6 +100,7 @@ class MarkerPoint extends Component {
    * @param {number} duration current video duration
    */
   updatePosition(duration) {
+    console.log(this.offset, duration);
     this.el_.style.left = (this.offset / duration * 100) + '%';
   }
 }

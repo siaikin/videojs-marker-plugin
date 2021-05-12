@@ -5,6 +5,41 @@
   <title>videojs-marker-plugin Demo</title>
   <link href="node_modules/video.js/dist/video-js.css" rel="stylesheet">
   <link href="dist/videojs-marker-plugin.css" rel="stylesheet">
+  <style>
+    /*.vjs-current-time {*/
+    /*  display: block!important;*/
+    /*  padding: 0;*/
+    /*}*/
+
+    /*.vjs-time-divider {*/
+    /*  display: block!important;*/
+    /*  padding: 0;*/
+    /*  min-width: auto;*/
+    /*}*/
+
+    /*.vjs-duration {*/
+    /*  display: block!important;*/
+    /*  padding: 0;*/
+    /*}*/
+
+    .vjs-control {
+      width: 3em!important;
+    }
+
+    .vjs-control > .vjs-control {
+      padding: 0;
+    }
+
+
+    .vjs-volume-panel-vertical .vjs-volume-vertical {
+      left: -3em!important;
+      background-color: #1F1F1F;
+    }
+
+    .vjs-remaining-time {
+      display: none!important;
+    }
+  </style>
 </head>
 <body>
   <video id="videojs-marker-plugin-player" class="video-js vjs-default-skin" controls>
@@ -41,7 +76,7 @@
             'fullscreenToggle',
           ],
           volumePanel: {
-            inline: false,
+            inline: true,
           }
         },
       });
