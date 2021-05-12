@@ -1,24 +1,22 @@
 # videojs-marker-plugin
 
+![](./assets/screen-shot.png "videojs-marker-plugin screen shot")
 
+## Demo
+see [here](https://siaikin.github.io/videojs-marker-plugin/)
 
-## Table of Contents
+## 安装
 
-<!-- START doctoc -->
-<!-- END doctoc -->
-## Installation
+1. 下载压缩包文件
+2. 通过npm安装
+    ```sh
+    npm install --save videojs-marker-plugin
+    ```
 
-```sh
-npm install --save videojs-marker-plugin
-```
+## 用法
+注: `videojs-marker-plugin` 依赖 `videojs` 需要先在项目中引入 `videojs`.
 
-## Usage
-
-To include videojs-marker-plugin on your website or web application, use any of the following methods.
-
-### `<script>` Tag
-
-This is the simplest case. Get the script in whatever way you prefer and include the plugin _after_ you include [video.js][videojs], so that the `videojs` global is available.
+### `<script>` 标签
 
 ```html
 <script src="//path/to/video.min.js"></script>
@@ -26,13 +24,31 @@ This is the simplest case. Get the script in whatever way you prefer and include
 <script>
   var player = videojs('my-video');
 
-  player.markerPlugin();
+  player.markerPlugin({
+    //  打点信息
+    markers: [
+      {
+        offset: 1,
+        type: 'text',
+        data: {
+          content: 'content1'
+        }
+      },
+      {
+        offset: 2,
+        type: 'text',
+        data: {
+          content: 'content2'
+        }
+      },
+    ],
+    // 是否展示右侧面板
+    panel: true
+  });
 </script>
 ```
 
-### Browserify/CommonJS
-
-When using with Browserify, install videojs-marker-plugin via npm and `require` the plugin as you would any other module.
+### require 引入
 
 ```js
 var videojs = require('video.js');
@@ -44,24 +60,73 @@ require('videojs-marker-plugin');
 
 var player = videojs('my-video');
 
-player.markerPlugin();
-```
-
-### RequireJS/AMD
-
-When using with RequireJS (or another AMD library), get the script in whatever way you prefer and `require` the plugin as you normally would:
-
-```js
-require(['video.js', 'videojs-marker-plugin'], function(videojs) {
-  var player = videojs('my-video');
-
-  player.markerPlugin();
+player.markerPlugin({
+  //  打点信息
+  markers: [
+    {
+      offset: 1,
+      type: 'text',
+      data: {
+        content: 'content1'
+      }
+    },
+    {
+      offset: 2,
+      type: 'text',
+      data: {
+        content: 'content2'
+      }
+    },
+  ],
+  // 是否展示右侧面板
+  panel: true
 });
 ```
 
-## License
+## 插件参数和接口
 
-MIT. Copyright (c) LAPTOP-5OI6562B\siaikin &lt;xiayi.jin@juphoon.com.cn&gt;
+### 初始化参数
+| name | type | description |
+| ---- | ---- | ----------- |
+| markers | Array<MarkerPointInfo> | 一个包含打点信息的数组 |
+| panel | boolean | 是否展示右侧打点信息面板 |
 
+```javascript
+markerPlugin({
+  markers: [
+    //  MarkerPointInfo
+    {
+      //  这条打点记录相对于视频时间轴的零点的偏移量(以秒为单位), 会跟据该值决定打点显示在进度条中的位置.
+      offset: 1,
+      //  打点类型, 目前仅有 `text` 类型
+      type: 'text',
+      //  打点数据, content内为打点文本内容
+      data: {
+        content: 'content'
+      }
+    }
+  ],
+  panel: true
+})
+```
+
+### 接口
+
+#### 更新打点信息
+
+```javascript
+plugin.updateOptions({
+  markers: [
+    {
+      offset: 1,
+      type: 'text',
+      data: {
+        content: 'content'
+      }
+    }
+  ],
+  panel: true
+});
+```
 
 [videojs]: http://videojs.com/

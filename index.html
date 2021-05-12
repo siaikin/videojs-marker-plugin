@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>videojs-marker-plugin Demo</title>
-  <link href="https://cdn.bootcdn.net/ajax/libs/video.js/7.12.1/video-js.min.css" rel="stylesheet">
+  <link href="node_modules/video.js/dist/video-js.css" rel="stylesheet">
   <link href="dist/videojs-marker-plugin.css" rel="stylesheet">
   <style>
     /*.vjs-current-time {*/
@@ -50,7 +50,7 @@
     <li><a href="/test/debug.html">Run unit tests in browser.</a></li>
     <li><a href="docs/api/">Read generated docs.</a></li>
   </ul>
-  <script src="https://cdn.bootcdn.net/ajax/libs/video.js/7.12.1/video.min.js"></script>
+  <script src="node_modules/video.js/dist/video.js"></script>
   <script src="dist/videojs-marker-plugin.js"></script>
   <script>
     (function(window, videojs) {
@@ -86,84 +86,42 @@
             offset: 8.5,
             type: 'text',
             data: {
-              content: '屏幕共享'
+              content: 'mark point info 1 (8.5)'
             }
           },
           {
             offset: 13.5,
             type: 'text',
             data: {
-              content: '通话持线'
+              content: 'mark point info 2 (13.5)'
             }
           },
           {
             offset: 19.5,
             type: 'text',
             data: {
-              content: '预转接说明'
+              content: 'mark point info 3 (19.5)'
             }
           },
           {
             offset: 26,
             type: 'text',
             data: {
-              content: '预转接说明'
-            }
-          },
-          {
-            offset: 27,
-            type: 'text',
-            data: {
-              content: '预转接说明'
-            }
-          },
-          {
-            offset: 28,
-            type: 'text',
-            data: {
-              content: '预转接说明'
-            }
-          },
-          {
-            offset: 29,
-            type: 'text',
-            data: {
-              content: '预转接说明'
-            }
-          },
-          {
-            offset: 30,
-            type: 'text',
-            data: {
-              content: '预转接说明'
-            }
-          },
-          {
-            offset: 31,
-            type: 'text',
-            data: {
-              content: '预转接说明'
-            }
-          },
-          {
-            offset: 32,
-            type: 'text',
-            data: {
-              content: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+              content: 'mark point info 4 (26.5)'
             }
           },
           {
             offset: 39.5,
             type: 'text',
             data: {
-              content: '预转接说明'
+              content: 'a long long long long long mark point info 5 (39.5)'
             }
           },
           {
             offset: 46,
             type: 'text',
             data: {
-              content: '预转接说明'
+              content: 'a mark point info 6 (46)'
             }
           },
         ],

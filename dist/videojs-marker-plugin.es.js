@@ -427,4 +427,6 @@ MarkerPlugin.defaultState = {}; // Include the version number.
 
 MarkerPlugin.VERSION = version; // Register the plugin with video.js.
 
+videojs.registerPlugin('markerPlugin', MarkerPlugin);
+
 export default MarkerPlugin;

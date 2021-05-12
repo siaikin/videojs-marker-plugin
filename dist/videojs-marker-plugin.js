@@ -433,6 +433,8 @@
 
   MarkerPlugin.VERSION = version; // Register the plugin with video.js.
 
+  videojs.registerPlugin('markerPlugin', MarkerPlugin);
+
   return MarkerPlugin;
 
 })));
