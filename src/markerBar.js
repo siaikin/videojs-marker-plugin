@@ -41,16 +41,22 @@ class MarkerBar extends Component {
 
     options.markers.forEach((marker) => this.addChild(marker));
 
-    const onLoadedMetaData = () => {
+    const updateMarkersPosition = () => {
       const duration = player.duration();
 
       options.markers.forEach((marker) => {
-        marker.updatePosition(duration);
+        if (!marker.isDisposed()) {
+          marker.updatePosition(duration);
+        }
       });
-      player.off('loadedmetadata', onLoadedMetaData);
     };
 
-    player.on('loadedmetadata', onLoadedMetaData);
+    // Video Metadata already loaded
+    if (player.readyState() > 0) {
+      updateMarkersPosition();
+    }
+    // In case there was metadata from previous video
+    player.one('loadedmetadata', updateMarkersPosition);
   }
 
   /**
