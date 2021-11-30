@@ -62,6 +62,7 @@ class MarkerPoint extends Component {
     this.offset = options.offset;
     this.type = options.type;
     this.data = options.data;
+    this.duration = player.duration();
 
     this.tip = new MarkerPointTip(player, {
       data: this.data,
@@ -80,6 +81,7 @@ class MarkerPoint extends Component {
       this.mouseDisplay.show();
       this.tip.timeToltip.hide();
     });
+    if (this.duration) this.updatePosition(this.duration);
   }
 
   /**
